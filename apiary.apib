@@ -1,0 +1,51 @@
+FORMAT: 1A
+HOST: https://v1.api.dudesolutions.io
+
+# Dude Eventing Service
+
+## Reference
+Good reference document: https://raw.githubusercontent.com/apiaryio/api-blueprint/master/examples/Polls%20API.md
+
+## Authentication
+*[API Name]* uses OAuth2 Authorization. First you create a new (or acquire existing) OAuth2 token using [DudeAuth](https://www.dudeauth.com/).
+
+## Media Types
+Where applicable this API uses the *JSON* media-type to represent resources.
+
+Requests and responses with a message-body use plain JSON to set or update resources.
+
+## Error States
+The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used throughout this API.
+
+In addition to standard response codes the response object returned from the server during an exception event may contain additional information in the following JSON format:
+
+        {
+            "message": "SOME MESSAGE",
+            "dudeReferenceId": "3523845A-4729-4CCB-9E16-01DEADF6C2DF",
+            "stackTrace": "Null, Typically"
+        }
+
+# Group Heartbeat
+
+## Heartbeat [/heartbeat]
+The heartbeat is exposed and provided to check for availability of the service.
+Any response that does not provide a ```200 OK``` response code should be treated as an error.
+
+### GET
+
++ Response 200 (application/json)
+    + Headers
+    
+            X-Dude-Api-Limit: Unlimited or Number
+            X-Dude-Api-Remaining: Unlimited or Number
+            X-Dude-Api-Server: Api Server ID
+            
+    + Attributes (Heartbeat)
+
+# Data Structures
+
+## Heartbeat (object)
+Represents a heartbeat response.
+
+### Properties
++ `vitalCheck`: true (boolean, required) - Vital check to ensure something is online.
