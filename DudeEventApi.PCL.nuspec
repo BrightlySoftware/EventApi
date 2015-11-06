@@ -24,6 +24,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="code\DudeUnifiedApi.PCL\bin\$configuration$\DudeEventApi.PCL.dll" target="lib\net45" />
+    <file src="code\DudeEventApi.PCL\bin\$configuration$\DudeEventApi.PCL.dll" target="lib\net45" />
   </files>
 </package>
