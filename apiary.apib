@@ -117,26 +117,24 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ## Base Client Object (object)
 + `id`: 1 (number, required) - The ID of the API client.
 
-## Recurrence Pattern Create And Update (object)
+## Recurrence Pattern (object)
 + `time`: 3 (number, optional) - The time of the recurrence
 + `dayOfMonth`: 24 (number, optional) - The day of the month that applies to the recurrence
 + `daysOfWeek` (array[number], optional) - The days of week that the recurrence applies to
 + `every`: 2 (number, optional) - How often it repeats
 + `month`: 12 (number, optional) - The month that the pattern recurs
 + `period`: 6 (number, optional) - The period
-+ `ordinal`: (string, optional) - The integer value relating to an ordinal number (eg: 1 for 1st)
++ `ordinal`: `1` (string, optional) - The integer value relating to an ordinal number (eg: 1 for 1st)
 + `startDateTime`: "2015-10-01T00:00:00Z" (string, optional) - The date/time that the recurrence pattern starts
 + `endDateTime`: "2016-10-01T00:00:00Z" (string, optional) - The date/time that the recurrence pattern terminates
-
-## Recurrence Pattern (Recurrence Pattern Create And Update)
-+ `cronex`: "0 0 12 * * ?" (string, required) - The cron expression
++ `cronex`: "0 0 12 * * ?" (string, optional) - The cron expression. This is a system generated expression based on the recurrence pattern.
 
 ## Schedule Data (object)
 + `id`: 1 (number) - the ID for the schedule object
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
 + `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The next date and time the schedule recurrence pattern will be executed
 + `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern was executed.
-+ `isActive`: 1 (boolean, required) - Whether the schedule will continue to generate based on its recurrence pattern
++ `isActive`: 1 (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
 
 ## Schedule Data Update (Schedule Data)
 + `id`: 1 (number, required) - The ID for the object
