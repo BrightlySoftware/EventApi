@@ -73,7 +73,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ### POST
 
 + Request
-    + Attributes (Schedule Data Create)
+    + Attributes (Schedule Data)
  
 + Response 201 (application/json)
     + Attributes (Schedule Data)
@@ -131,20 +131,11 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ## Recurrence Pattern (Recurrence Pattern Create And Update)
 + `cronex`: "0 0 12 * * ?" (string, required) - The cron expression
 
-## Schedule Data Create (object)
-+ `recurrencePattern` (Recurrence Pattern Create And Update, required) - The recurence pattern for the schdule
-
-## Schedule Data Update (Schedule Data Create)
-+ `id`: 1 (number, required) - The ID for the object
-
-## Schedule Data (Schedule Data Update)
+## Schedule Data (object)
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
 + `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The next date and time the schedule recurrence pattern will be executed
 + `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern was executed.
-+ `createdDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The date and time in ISO-8601 format the record was created.
-+ `createdByUser` (Base User Object, optional) - Information about the user who created the record.
-+ `createdByApiClient` (Base Client Object, optional) - Information about the client who created the record.
-+ `updatedDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The date and time in ISO-8601 format the record was last updated.
-+ `updatedByUser` (Base User Object, optional) - Information about the user who last modified the record.
-+ `updatedByApiClient` (Base Client Object, optional) - Information about the client who last modified the record.
++ `isActive`: 1 (boolean, required) - Whether the schedule will continue to generate based on its recurrence pattern
 
+## Schedule Data Update (Schedule Data)
++ `id`: 1 (number, required) - The ID for the object
