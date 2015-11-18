@@ -139,6 +139,8 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 ## Schedule Data (Schedule Data Update)
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
++ `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The next date and time the schedule recurrence pattern will be executed
++ `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern was executed.
 + `createdDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The date and time in ISO-8601 format the record was created.
 + `createdByUser` (Base User Object, optional) - Information about the user who created the record.
 + `createdByApiClient` (Base Client Object, optional) - Information about the client who created the record.
