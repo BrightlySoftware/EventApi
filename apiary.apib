@@ -127,6 +127,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `ordinal`: `1` (string, optional) - The integer value relating to an ordinal number (eg: 1 for 1st)
 + `startDateTime`: "2015-10-01T00:00:00Z" (string, optional) - The date/time that the recurrence pattern starts
 + `endDateTime`: "2016-10-01T00:00:00Z" (string, optional) - The date/time that the recurrence pattern terminates
++ `targetDate`: "2016-10-01T00:00:00Z" (string, optional) - The target generation date for the recurrence pattern
 + `cronex`: "0 0 12 * * ?" (string, optional) - The cron expression. This is a system generated expression based on the recurrence pattern.
 
 ## Schedule Data (object)
@@ -134,6 +135,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
 + `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The next date and time the schedule recurrence pattern will be executed
 + `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern was executed.
++ `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern will be executed.
 + `isActive`: 1 (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
 
 ## Schedule Data Update (Schedule Data)
