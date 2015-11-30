@@ -9,7 +9,7 @@ USECONTROLLERPOSTFIX: FALSE
 USEENUMPOSTFIX: FALSE
 USECONSTRUCTORSFORCONFIG: TRUE
 CSHARPDEFAULTNAMESPACE: DSI.SDK.Event
-JAVADEFAULTNAMESPACE: io.dudesolutions.<ApiName>
+JAVADEFAULTNAMESPACE: io.dudesolutions.event
 BRANDLABEL: Dude Solutions, Inc.
 USERAGENT: Dude SDK
 
@@ -64,13 +64,13 @@ Any response that does not provide a ```200 OK``` response code should be treate
     + page: 1 (number, optional) - The page to request from the collection.
     + pagesize: 1000 (number, optional) - The number of records to load in a page from the collection.
     + orderby: Quantity asc (string, optional) - A string describing the ordering to perform on the collection.
-    
+
 ### GET
 
 + Response 200 (application/json)
     + Attributes (Base Collection Response)
         + `data` (array[Schedule Data], required)
-        
+
 ### POST
 
 + Request
@@ -78,18 +78,18 @@ Any response that does not provide a ```200 OK``` response code should be treate
  
 + Response 201 (application/json)
     + Attributes (Schedule Data)
-    
+
 ## Schedule Detail [/accounts/{accountId}/scheduledata/{scheduleId}]
 
 + Parameters
     + accountId: 1234567890 (number, required) - ID of the account in the form of an integer
     + scheduleId: 145 (number, required) - The ID of the schedule
-    
+
 ### GET
 
 + Response 200 (application/json)
     + Attributes (Schedule Data)
-    
+
 ### PUT
 
 + Request
