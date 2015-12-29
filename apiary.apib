@@ -45,90 +45,91 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 ### GET
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
     + Headers
-    
+
             X-Dude-Api-Limit: Unlimited or Number
             X-Dude-Api-Remaining: Unlimited or Number
             X-Dude-Api-Server: Api Server ID
-            
+
     + Attributes (Heartbeat)
-    
+
 
 # Group Schedule
 
 ## Schedule Collection [/accounts/{accountId}/scheduledata{?page,pagesize,orderby}]
 
 + Parameters
-    + accountId: 1234567890 (required, number) - ID of the account in the form of an integer
-    + page: 1 (number, optional) - The page to request from the collection.
-    + pagesize: 1000 (number, optional) - The number of records to load in a page from the collection.
-    + orderby: Quantity asc (string, optional) - A string describing the ordering to perform on the collection.
+    + accountId: 2 (required, number) - #INT ID of the account in the form of an integer
+    + page: 1 (number, optional) - #INT The page to request from the collection.
+    + pagesize: 1000 (number, optional) - #INT The number of records to load in a page from the collection.
+    + orderby: Id desc (string, optional) - A string describing the ordering to perform on the collection.
 
 ### GET
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
     + Attributes (Base Collection Response)
         + `data` (array[Schedule Data], required)
 
 ## Schedule Create [/accounts/{accountId}/scheduledata]
 
 + Parameters
-    + accountId: 1234567890 (required, number) - ID of the account in the form of an integer
+    + accountId: 2 (required, number) - #INT ID of the account in the form of an integer
 
 ### POST
 
 + Request
     + Attributes (Base Schedule Data)
- 
-+ Response 201 (application/json)
+
++ Response 201 (application/json; charset=utf-8)
     + Attributes (Schedule Data)
 
 ## Schedule Detail [/accounts/{accountId}/scheduledata/{scheduleId}]
 
 + Parameters
-    + accountId: 1234567890 (number, required) - ID of the account in the form of an integer
-    + scheduleId: 145 (number, required) - The ID of the schedule
+    + accountId: 2 (number, required) - #INT ID of the account in the form of an integer
+    + scheduleId: 5 (number, required) - #INT The ID of the schedule
 
 ### GET
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
     + Attributes (Schedule Data)
 
 ### PUT
 
 + Request
     + Attributes (Schedule Data)
-    
-+ Response 200 (application/json)
+
++ Response 200 (application/json; charset=utf-8)
     + Attributes (Schedule Data)
 
 # Data Structures
 
 ## Heartbeat (object)
-+ `vitalCheck`: true (boolean, required) - Vital check to ensure something is online.
++ `cachevitalcheck`: true (boolean, required) - Vital check to ensure something is online.
++ `eventdbvitalcheck`: true (boolean, required) - Vital check to ensure something is online.
 
 ## Base Collection Response (object)
-+ `page`: 1 (number, required) - The current page provided in the response data.
-+ `pageSize`: 1000 (number, required) - The page size returned in the response data.
-+ `dataSize`: 1000 (number, required) - The total records returned in the response.
-+ `total`: 2000 (number, required) - The total number of records available in the collection.
++ `page`: 1 (number, required) - #INT The current page provided in the response data.
++ `pageSize`: 1000 (number, required) - #INT The page size returned in the response data.
++ `dataSize` (number, required) - #INT The total records returned in the response.
++ `total` (number, required) - #INT The total number of records available in the collection.
 
 ## Base User Object (object)
-+ `id`: 1 (number, required) - The ID of the user.
++ `id`: 1 (number, required) - #INT The ID of the user.
 + `firstName`: "John" (string, required) - The first name of the user.
 + `lastName`: "Smith" (string, required) - The last name of the user.
 + `email`: "john.smith@dudesolutions.io" (string, required) - The email address of the user.
 
 ## Base Client Object (object)
-+ `id`: 1 (number, required) - The ID of the API client.
++ `id`: 1 (number, required) - #INT The ID of the API client.
 
 ## Recurrence Pattern (object)
 + `time`: `03:00:00` (string, optional) - The time of the recurrence
-+ `dayOfMonth`: 24 (number, optional) - The day of the month that applies to the recurrence
++ `dayOfMonth`: 24 (number, optional) - #INT The day of the month that applies to the recurrence
 + `daysOfWeek` (array[number], optional) - The days of week that the recurrence applies to
-+ `every`: 2 (number, optional) - How often it repeats
-+ `month`: 12 (number, optional) - The month that the pattern recurs
++ `every`: 2 (number, optional) - #INT How often it repeats
++ `month`: 12 (number, optional) - #INT The month that the pattern recurs
 + `period`: `Day` (string, optional) - The period
 + `ordinal`: `1` (string, optional) - The integer value relating to an ordinal number (eg: 1 for 1st)
 + `startDateTime`: "2015-10-01T00:00:00Z" (string, optional) - The date/time that the recurrence pattern starts
@@ -141,7 +142,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `isActive`: 1 (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
 
 ## Schedule Data (Base Schedule Data)
-+ `id`: 1 (number, required) - The ID for the object
++ `id`: 1 (number, required) - #INT The ID for the object
 + `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The next date and time the schedule recurrence pattern will be executed
 + `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern was executed.
 + `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern will be executed.
