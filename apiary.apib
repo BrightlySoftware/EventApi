@@ -88,7 +88,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 + Parameters
     + accountId: 2 (number, required) - #INT ID of the account in the form of an integer
-    + scheduleId: 5 (number, required) - #INT The ID of the schedule
+    + scheduleId: 1 (number, required) - #INT The ID of the schedule
 
 ### GET
 
@@ -98,7 +98,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ### PUT
 
 + Request
-    + Attributes (Schedule Data)
+    + Attributes (Update Schedule Data)
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes (Schedule Data)
@@ -139,10 +139,12 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 ## Base Schedule Data (object)
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
-+ `isActive`: 1 (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
++ `isActive`: true (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
 
-## Schedule Data (Base Schedule Data)
+## Update Schedule Data (Base Schedule Data)
 + `id`: 1 (number, required) - #INT The ID for the object
+
+## Schedule Data (Update Schedule Data)
 + `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The next date and time the schedule recurrence pattern will be executed
 + `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern was executed.
 + `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern will be executed.
