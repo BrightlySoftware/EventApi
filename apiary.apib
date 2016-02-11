@@ -38,6 +38,15 @@ In addition to standard response codes the response object returned from the ser
             "stackTrace": "Null, Typically"
         }
 
+# Group System Information
+
+## System Information [/]
+
+### GET
+
++ Response 200 (application/json)
+    + Attributes (System Information)
+
 # Group Heartbeat
 
 ## Heartbeat [/heartbeat]
@@ -104,19 +113,10 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + Response 200 (application/json; charset=utf-8)
     + Attributes (Schedule Data)
 
-# System Information
-
-## System Information [/]
-
-### GET
-
-+ Response 200 (application/json)
-    + Attributes (System Information)
-
 # Data Structures
 
 ## System Information (object)
-+ `application`: `Dude Unified Api` (string, required) - The name of the application.
++ `application`: `Dude Event Api` (string, required) - The name of the application.
 + `version` : `1.0.0.0` (string, required) - The assembly version.
 + `apiVersion` : `1.0.0.0` (string, required) - The API version.
 + `vitals` (Heartbeat, required) - The state of the system dependencies.
