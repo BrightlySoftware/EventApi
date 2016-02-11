@@ -111,9 +111,9 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ### GET
 
 + Response 200 (application/json)
-	+ Attributes (System Information)
-		+ `vitals` (Heartbeat)
-		+ `links` (array[System Links])
+    + Attributes (System Information)
+        + `vitals` (Heartbeat)
+        + `links` (array[System Links])
 
 # Data Structures
 
@@ -126,7 +126,6 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `endpoint` : `WorkOrder` (string, required) - The name of the endpoint.
 + `action` : `Get` (string, required) - The REST action.
 + `route` : `/accounts/{accountId}/workorders` (string, required) - The route to the endpoint.
-
 
 ## Heartbeat (object)
 + `cachevitalcheck`: true (boolean, required) - Vital check to ensure something is online.
