@@ -103,8 +103,30 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes (Schedule Data)
+	
+# System Information
+
+## System Information [/]
+
+### GET
+
++ Response 200 (application/json)
+	+ Attributes (System Information)
+		+ `vitals` (Heartbeat)
+		+ `links` (array[System Links])
 
 # Data Structures
+
+## System Information (object)
++ `application`: `Dude Unified Api` (string, required) - The name of the application.
++ `version` : `1.0.0.0` (string, required) - The assembly version.
++ `apiVersion` : `1.0.0.0` (string, required) - The API version.
+
+## System Links (object)
++ `endpoint` : `WorkOrder` (string, required) - The name of the endpoint.
++ `action` : `Get` (string, required) - The REST action.
++ `route` : `/accounts/{accountId}/workorders` (string, required) - The route to the endpoint.
+
 
 ## Heartbeat (object)
 + `cachevitalcheck`: true (boolean, required) - Vital check to ensure something is online.
