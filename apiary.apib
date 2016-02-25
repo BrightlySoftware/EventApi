@@ -1,13 +1,18 @@
 FORMAT: 1A
 HOST: https://v1.api.dudesolutions.io
 
+USECOMMONSDKLIBRARY: TRUE
 GENERATEASYNCCODE: TRUE
+GENERATEINTERFACES: TRUE
 USEMETHODPREFIX: TRUE
 USEMODELPOSTFIX: FALSE
 USECONTROLLERPOSTFIX: FALSE
 USEENUMPOSTFIX: FALSE
 USECONSTRUCTORSFORCONFIG: TRUE
 CSHARPDEFAULTNAMESPACE: DSI.SDK.Event
+JAVADEFAULTNAMESPACE: io.dudesolutions.event
+BRANDLABEL: Dude Solutions, Inc.
+USERAGENT: Dude SDK
 
 # Dude Event Api
 
@@ -33,6 +38,15 @@ In addition to standard response codes the response object returned from the ser
             "stackTrace": "Null, Typically"
         }
 
+# Group System Information
+
+## System Information [/]
+
+### GET
+
++ Response 200 (application/json)
+    + Attributes (System Information)
+
 # Group Heartbeat
 
 ## Heartbeat [/heartbeat]
@@ -41,19 +55,118 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 ### GET
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
     + Headers
-    
+
             X-Dude-Api-Limit: Unlimited or Number
             X-Dude-Api-Remaining: Unlimited or Number
             X-Dude-Api-Server: Api Server ID
-            
+
     + Attributes (Heartbeat)
+
+
+# Group Schedule
+
+## Schedule Collection [/accounts/{accountId}/scheduledata{?page,pagesize,orderby}]
+
++ Parameters
+    + accountId: 2 (required, number) - #INT ID of the account in the form of an integer
+    + page: 1 (number, optional) - #INT The page to request from the collection.
+    + pagesize: 1000 (number, optional) - #INT The number of records to load in a page from the collection.
+    + orderby: Id desc (string, optional) - A string describing the ordering to perform on the collection.
+
+### GET
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (Base Collection Response)
+        + `data` (array[Schedule Data], required)
+
+## Schedule Create [/accounts/{accountId}/scheduledata]
+
++ Parameters
+    + accountId: 2 (required, number) - #INT ID of the account in the form of an integer
+
+### POST
+
++ Request
+    + Attributes (Base Schedule Data)
+
++ Response 201 (application/json; charset=utf-8)
+    + Attributes (Schedule Data)
+
+## Schedule Detail [/accounts/{accountId}/scheduledata/{scheduleId}]
+
++ Parameters
+    + accountId: 2 (number, required) - #INT ID of the account in the form of an integer
+    + scheduleId: 1 (number, required) - The ID of the schedule
+
+### GET
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (Schedule Data)
+
+### PUT
+
++ Request
+    + Attributes (Update Schedule Data)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (Schedule Data)
 
 # Data Structures
 
-## Heartbeat (object)
-Represents a heartbeat response.
+## System Information (object)
++ `application`: `Dude Event Api` (string, required) - The name of the application.
++ `version` : `1.0.0.0` (string, required) - The assembly version.
++ `apiVersion` : `1.0.0.0` (string, required) - The API version.
++ `vitals` (Heartbeat, required) - The state of the system dependencies.
++ `links` (array[System Links], required) - The API routes.
 
-### Properties
-+ `vitalCheck`: true (boolean, required) - Vital check to ensure something is online.
+## System Links (object)
++ `endpoint` : `WorkOrder` (string, required) - The name of the endpoint.
++ `action` : `Get` (string, required) - The REST action.
++ `route` : `/accounts/{accountId}/workorders` (string, required) - The route to the endpoint.
+
+## Heartbeat (object)
++ `cachevitalcheck`: true (boolean, required) - Vital check to ensure something is online.
++ `eventdbvitalcheck`: true (boolean, required) - Vital check to ensure something is online.
+
+## Base Collection Response (object)
++ `page`: 1 (number, required) - #INT The current page provided in the response data.
++ `pageSize`: 1000 (number, required) - #INT The page size returned in the response data.
++ `dataSize` (number, required) - #INT The total records returned in the response.
++ `total` (number, required) - #INT The total number of records available in the collection.
+
+## Base User Object (object)
++ `id`: 1 (number, required) - #INT The ID of the user.
++ `firstName`: "John" (string, required) - The first name of the user.
++ `lastName`: "Smith" (string, required) - The last name of the user.
++ `email`: "john.smith@dudesolutions.io" (string, required) - The email address of the user.
+
+## Base Client Object (object)
++ `id`: 1 (number, required) - #INT The ID of the API client.
+
+## Recurrence Pattern (object)
++ `time`: `03:00:00` (string, optional) - The time of the recurrence
++ `dayOfMonth`: 24 (number, optional) - #INT The day of the month that applies to the recurrence
++ `daysOfWeek` (array[number], optional) - #INT The days of week that the recurrence applies to
++ `every`: 2 (number, optional) - #INT How often it repeats
++ `month`: 12 (number, optional) - #INT The month that the pattern recurs
++ `period`: `Day` (string, optional) - The period
++ `ordinal`: `1` (string, optional) - The integer value relating to an ordinal number (eg: 1 for 1st)
++ `startDateTime`: "2015-10-01T00:00:00Z" (string, optional) - The date/time that the recurrence pattern starts
++ `endDateTime`: "2016-10-01T00:00:00Z" (string, optional) - The date/time that the recurrence pattern terminates
++ `targetDateTime`: "2016-10-01T00:00:00Z" (string, optional) - The target generation date for the recurrence pattern
++ `cronex`: "0 0 12 * * ?" (string, optional) - The cron expression. This is a system generated expression based on the recurrence pattern.
+
+## Base Schedule Data (object)
++ `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
++ `isActive`: true (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
+
+## Update Schedule Data (Base Schedule Data)
++ `id`: 1 (number, required) - The ID for the object
+
+## Schedule Data (Update Schedule Data)
++ `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The next date and time the schedule recurrence pattern will be executed
++ `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern was executed.
++ `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - The last date and time the schedule recurrence pattern will be executed.
