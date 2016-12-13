@@ -154,16 +154,16 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `id`: 1 (number, required) - {INT} The ID of the API client.
 
 ## Recurrence Pattern (object)
-+ `time`: `03:00:00` (string, optional) - The time of the recurrence
++ `time`: `03:00:00` (string, optional) - The time of the recurrence local to the account's timezone.
 + `dayOfMonth`: 24 (number, optional) - {INT} The day of the month that applies to the recurrence
 + `daysOfWeek` (array[number], optional) - {INT} The days of week that the recurrence applies to
 + `every`: 2 (number, optional) - {INT} How often it repeats
 + `month`: 12 (number, optional) - {INT} The month that the pattern recurs
 + `period`: `Day` (string, optional) - The period
 + `ordinal`: `1` (string, optional) - The integer value relating to an ordinal number (eg: 1 for 1st)
-+ `startDateTime`: "2015-10-01T00:00:00Z" (string, optional) - {DATETIME} The date/time that the recurrence pattern starts
-+ `endDateTime`: "2016-10-01T00:00:00Z" (string, optional) - {DATETIME} The date/time that the recurrence pattern terminates
-+ `targetDateTime`: "2016-10-01T00:00:00Z" (string, optional) - {DATETIME} The target generation date for the recurrence pattern
++ `startDateTime`: "2015-10-01T00:00:00Z" (string, optional) - {DATETIME} The date/time that the recurrence pattern starts in UTC.
++ `endDateTime`: "2016-10-01T00:00:00Z" (string, optional) - {DATETIME} The date/time that the recurrence pattern terminates in UTC
++ `targetDateTime`: "2016-10-01T00:00:00Z" (string, optional) - {DATETIME} The target generation date for the recurrence pattern in UTC
 + `cronex`: "0 0 12 * * ?" (string, optional) - The cron expression. This is a system generated expression based on the recurrence pattern.
 
 ## Base Schedule Data (object)
@@ -174,6 +174,6 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `id`: 1 (number, required) - {LONG} The ID for the object
 
 ## Schedule Data (Update Schedule Data)
-+ `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The next date and time the schedule recurrence pattern will be executed
-+ `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern was executed.
-+ `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern will be executed.
++ `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The next date and time the schedule recurrence pattern will be executed in UTC.
++ `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern was executed in UTC.
++ `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern will be executed in UTC.
