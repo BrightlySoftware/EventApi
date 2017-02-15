@@ -184,6 +184,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ## Base Schedule Data (object)
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
 + `isActive`: true (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
++ `type` : `Fixed` (PM Schedule Type, required) - The type of schedule.
 
 ## Update Schedule Data (Base Schedule Data)
 + `id`: 1 (number, required) - {LONG} The ID for the object
@@ -192,3 +193,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The next date and time the schedule recurrence pattern will be executed in UTC.
 + `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern was executed in UTC.
 + `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern will be executed in UTC.
+
+## PM Schedule Type (enum)
++ Fixed (string)
++ Floating (string)
