@@ -120,6 +120,31 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 + Response 204
 
+## Schedule Detail Work Order Close [/accounts/{accountId}/scheduledata/{scheduleId}/workorderclose]
+
++ Parameters
+    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
+    + scheduleId: 1 (number, required) - {LONG} The ID of the schedule
+
+### PUT
+
++ Response 202
+
+## Schedule Asset Detail [/accounts/{accountId}/scheduledata/{scheduleId}/businessassets/{id}]
+
++ Parameters
+    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
+    + scheduleId: 1 (number, required) - {LONG} The ID of the schedule
+    + id: 1 (number, required) - {LONG} The ID of the business asset
+
+### PUT
+
++ Response 202
+
+### DELETE
+
++ Response 204
+
 # Data Structures
 
 ## System Information (object)
