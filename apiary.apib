@@ -194,6 +194,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ## Base Schedule Data (object)
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
 + `isActive`: true (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
++ `scheduleType`: Fixed (string, required) - A string value representing the schedule type based on the Enum in UnifiedAPI
 
 ## Update Schedule Data (Base Schedule Data)
 + `id`: 1 (number, required) - {LONG} The ID for the object
