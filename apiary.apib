@@ -98,34 +98,6 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + Response 201 (application/json; charset=utf-8)
     + Attributes (Schedule Data)
 
-## Schedule Force Update [/accounts/{accountId}/scheduledata/forceupdate]
-
-+ Parameters
-    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
-
-### POST
-
-+ Response 202
-
-## Schedule Force Update Logs [/accounts/{accountId}/scheduledata/forceupdate/logs]
-
-+ Parameters
-    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
-
-### GET
-
-+ Response 200 (application/json; charset=utf-8)
-    + Attributes (Base Collection Response)
-        + `data` (array[Schedule Data Force Update Log], required)
-
-### POST
-
-+ Request
-    + Attributes (Base Schedule Data Force Update Log)
-
-+ Response 201 (application/json; charset=utf-8)
-    + Attributes (Schedule Data Force Update Log)
-
 ## Schedule Detail [/accounts/{accountId}/scheduledata/{scheduleId}]
 
 + Parameters
@@ -163,6 +135,17 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ### DELETE
 
 + Response 204
+
+## Schedule Asset Generate Work Order [/accounts/{accountId}/scheduledata/{scheduleId}/businessassets/{id}/generate]
+
++ Parameters
+    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
+    + scheduleId: 1 (number, required) - {LONG} The ID of the schedule
+    + id: 1 (number, required) - {LONG} The ID of the business asset
+
+### POST
+
++ Response 200
 
 ## Schedule Asset Generate Work Order [/accounts/{accountId}/scheduledata/{scheduleId}/businessassets/{id}/generate]
 
@@ -246,12 +229,3 @@ Represents a business asset associated with a PmSchedule.
 + `hasChildren`: true (boolean, optional) - Indicates whether the asset has child assets
 + `notes`: Some notes would go here (string, optional) - Notes about the given asset
 + `hasOpenWorkOrders`: true (boolean, optional) - Indicates whether the asset has open work orders associated with this schedule.
-
-## Base Schedule Data Force Update Log
-+ `accountId`: (number, required) - The account ID
-+ `scheduleDataId`: (number, optional) - The schedule data ID
-+ `message`: `Log message` (string, required) - The log message
-+ `timestamp`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The date and time of the log
-
-## Schedule Data Force Update Log (Base Schedule Data Force Update Log)
-+ `id`: 1 (number, required)
