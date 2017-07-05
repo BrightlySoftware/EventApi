@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://v1.api.dudesolutions.io
+HOST: https://v1.event.dudesolutions.io
 
 USECOMMONSDKLIBRARY: TRUE
 GENERATEASYNCCODE: TRUE
@@ -16,6 +16,7 @@ USERAGENT: Dude SDK
 NULLIFY404: TRUE
 VALIDATEREQUIREDPARAMETERS: FALSE
 COLLECTPARAMETERS: TRUE
+ARRAYSERIALIZATION: Plain
 
 # Dude Event Api
 
@@ -120,6 +121,43 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 + Response 204
 
+## Schedule Asset Detail [/accounts/{accountId}/scheduledata/{scheduleId}/businessassets/{id}]
+
++ Parameters
+    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
+    + scheduleId: 1 (number, required) - {LONG} The ID of the schedule
+    + id: 1 (number, required) - {LONG} The ID of the business asset
+
+### PUT
+
++ Response 202
+
+### DELETE
+
++ Response 204
+
+## Schedule Asset Generate Work Order [/accounts/{accountId}/scheduledata/{scheduleId}/businessassets/{id}/generate]
+
++ Parameters
+    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
+    + scheduleId: 1 (number, required) - {LONG} The ID of the schedule
+    + id: 1 (number, required) - {LONG} The ID of the business asset
+
+### POST
+
++ Response 200
+
+## Schedule Asset Generate Work Order [/accounts/{accountId}/scheduledata/{scheduleId}/businessassets/{id}/generate]
+
++ Parameters
+    + accountId: 2 (number, required) - {INT} ID of the account in the form of an integer
+    + scheduleId: 1 (number, required) - {LONG} The ID of the schedule
+    + id: 1 (number, required) - {LONG} The ID of the business asset
+
+### POST
+
++ Response 200
+
 # Data Structures
 
 ## System Information (object)
@@ -169,6 +207,8 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ## Base Schedule Data (object)
 + `recurrencePattern` (Recurrence Pattern, required) - The recurrence pattern
 + `isActive`: true (boolean, required) - Boolean value to indicate whether the schedule will continue to generate based on its recurrence pattern
++ `scheduleType`: Fixed (string, required) - A string value representing the schedule type based on the Enum in UnifiedAPI
++ `businessAssets` (array[PmSchedule Business Asset], required) - The business assets on the pm schedule.
 
 ## Update Schedule Data (Base Schedule Data)
 + `id`: 1 (number, required) - {LONG} The ID for the object
@@ -177,3 +217,15 @@ Any response that does not provide a ```200 OK``` response code should be treate
 + `nextRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The next date and time the schedule recurrence pattern will be executed in UTC.
 + `lastRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern was executed in UTC.
 + `finalRunDateTime`: `2015-01-01T00:00:00.123Z` (string, optional) - {DATETIME} The last date and time the schedule recurrence pattern will be executed in UTC.
+
+## PmSchedule Business Asset (object)
+Represents a business asset associated with a PmSchedule.
+
+### Properties
++ `id`: 1 (number, required) - {LONG} The ID of the object
++ `name`: pump (string, optional) - The name of the asset
++ `description`: outside pump (string, optional) - The description of the asset
++ `isActive`: true (boolean, optional) - Indicates if the asset is active
++ `hasChildren`: true (boolean, optional) - Indicates whether the asset has child assets
++ `notes`: Some notes would go here (string, optional) - Notes about the given asset
++ `hasOpenWorkOrders`: true (boolean, optional) - Indicates whether the asset has open work orders associated with this schedule.
